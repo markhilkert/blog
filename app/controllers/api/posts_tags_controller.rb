@@ -1,41 +1,44 @@
 class Api::PostsTagsController < ApplicationController
   def index
-    @post_tags = PostTag.all 
+    @posts_tags = PostsTag.all
     render 'index.json.jbuilder'
   end
 
   def create
-    @post_tag = PostTag.new(
-                    name: params[:name]
-                    )
+    @posts_tag = PostsTag.new(
+                              post_id: params[:post_id],
+                              tag_id: params[:tag_id]
+                              )
     
-    if @post_tag.save
+    if @posts_tag.save
       render 'show.json.jbuilder'
     else
-      render json: {errors: @post_tag.errors.full_messages}, status: :unprocessable_entity
+      render json: {errors: @posts_tag.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
   def show
-    @post_tag = PostTag.find(params[:id])
+    @posts_tag = PostsTag.find(params[:id])
     render 'show.json.jbuilder'
   end
 
   def update
-    @post_tag = PostTag.find(params[:id])
+    @posts_tag = PostsTag.find(params[:id])
 
-    @post_tag.name = params[:name] || @post_tag.name
+    @posts_tag.post_id = params[:post_id] || @posts_tag.post_id
+    @posts_tag.commenter = params[:commenter] || @posts_tag.commenter
+    @posts_tag.body = params[:body] || @posts_tag.body
 
-    if @post_tag.save
+    if @posts_tag.save
       render 'show.json.jbuilder'
     else
-      render json: {errors: @post_tag.errors.full_messages}, status: :unprocessable_entity
+      render json: {errors: @comment.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
   def destroy
-    post_tag = PostTag.find(params[:id])
-    post_tag.destroy
-    render json: {message: "Successfully removed post_tag."}
+    posts_tag = PostsTag.find(params[:id])
+    posts_tag.destroy
+    render json: {message: "Successfully removed posts_tag."}
   end
 end

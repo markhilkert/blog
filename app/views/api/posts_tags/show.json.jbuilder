@@ -1,0 +1,1 @@
+json.partial! @posts_tag, partial: "posts_tag", as: :posts_tag
