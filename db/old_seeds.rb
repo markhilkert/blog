@@ -1,3 +1,9 @@
+User.create!(
+            email: "mark@gmail.com",
+            password: "password",
+            password_confirmation: "password"
+            )
+
 Post.create!( 
             date: Date.parse("March 28, 2019"),
             preview_image: '/images/blog/blog-1.jpg',
