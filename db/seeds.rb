@@ -7,7 +7,8 @@ User.create!(
 Post.create!( 
             date: Date.parse("March 28, 2019"),
             preview_image: '/images/blog/blog-1.jpg',
-            title: "Sleep&#8212It's frustratingly Important.",
+            # title: "Sleep&#8212It's frustratingly Important.",
+            title: "Sleep—It's frustratingly Important.",
             user_id: 1,
             body: "                 
                   <h6>Sleep & Memory Formation</h6>

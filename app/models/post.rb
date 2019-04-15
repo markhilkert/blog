@@ -5,13 +5,6 @@ class Post < ApplicationRecord
   has_many :comments
 
   def formatted_tags
-    formatted_tags = []
-
-    (self.tags.length - 1).times do |index|
-      formatted_tags << self.tags[index].name + ","
-    end
-    formatted_tags << self.tags[-1].name
-
-    formatted_tags
+    self.tags.map.with_index { |tag, index| index == self.tags.length - 1 ? tag.name : tag.name + "," }
   end
 end
