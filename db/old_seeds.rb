@@ -57,9 +57,9 @@ Comment.create!(
                 body: "Great job, Mark!"
                 )
 
-Tag.create!(name: "Sleep")
-Tag.create!(name: "Lifestyle")
-Tag.create!(name: "Productivity")
+Tag.create!(name: "sleep")
+Tag.create!(name: "lifestyle")
+Tag.create!(name: "productivity")
 
 PostsTag.create!(
                 post_id: 1,

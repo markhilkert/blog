@@ -17,7 +17,11 @@ class Api::TagsController < ApplicationController
   end
 
   def show
-    @tag = Tag.find(params[:id])
+    if params[:id].to_i == 0
+      @tag = Tag.find_by(name: params[:id])
+    else
+      @tag = Tag.find(params[:id])
+    end
     render 'show.json.jbuilder'
   end
 
