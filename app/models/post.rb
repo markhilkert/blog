@@ -5,6 +5,10 @@ class Post < ApplicationRecord
   has_many :comments
 
   def formatted_tags
-    self.tags.map.with_index { |tag, index| index == self.tags.length - 1 ? tag.name : tag.name + "," }
+    self.tags.map.with_index { |tag, index| index == self.tags.length - 1 ? tag.name.capitalize : tag.name.capitalize + "," }
+  end
+
+  def number_of_comments
+    self.comments.length
   end
 end

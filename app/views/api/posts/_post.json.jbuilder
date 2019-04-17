@@ -4,6 +4,7 @@ json.preview_image post.preview_image
 json.title post.title
 json.body post.body
 json.preview_text post.preview_text
+json.number_of_comments post.number_of_comments
 
 json.formatted do
   json.tags do
@@ -16,6 +17,9 @@ json.comments do
 end
 
 json.tags do
-  json.array! post.tags, partial: 'api/tags/tag', as: :tag
+  json.array! post.tags.each do |tag|
+    json.id tag.id
+    json.name tag.name
+  end
 end
 
